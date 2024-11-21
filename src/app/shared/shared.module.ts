@@ -37,6 +37,14 @@ import { ButtonComponent } from '@shared/components/button/button.component';
 import { TasksComponent } from '@shared/components/tasks/tasks.component';
 import { TaskItemComponent } from '@shared/components/task-item/task-item.component';
 import { AddTaskComponent } from '@shared/components/add-task/add-task.component';
+import { AboutComponent } from '@shared/components/about/about.component';
+
+
+const APP_ROUTES: Routes = [
+  {path:'', component: TasksComponent },
+  {path:'about', component: AboutComponent }
+]
+
 
 
 const MATERIAL_MODULES = [
@@ -62,7 +70,7 @@ const MATERIAL_MODULES = [
 
 const MODULES = [
   CommonModule,
-  RouterModule,
+  RouterModule.forRoot(APP_ROUTES, { enableTracing: true }),
   FormsModule,
   ReactiveFormsModule,
   FontAwesomeModule,
@@ -89,7 +97,8 @@ const COMPONENTS = [
   ButtonComponent,
   TasksComponent,
   TaskItemComponent,
-  AddTaskComponent
+  AddTaskComponent,
+  AboutComponent
 ];
 
 export const CUSTOM_FORMATS: MatDateFormats = {

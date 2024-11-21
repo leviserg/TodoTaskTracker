@@ -15,6 +15,7 @@ import { IInterpolateParams } from "@shared/pipes/interpolate-res-params.pipe";
           (click)="$event.stopPropagation()"
           [innerHTML]="(s.desc | interpolateResParams: interpolateParams) | safe: 'html'"
           class="footer-container-item"></div>
+          <a routerLink="about">About</a>
       </div>
     </footer>
   `,
