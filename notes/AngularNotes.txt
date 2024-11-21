@@ -1,0 +1,72 @@
+FE: AngularNotes
+- install / uninstall
+on Windows using PowerShell terminal:
+	> Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
+	> npm install -g @angular/cli
+on Linux/Mac:
+	> sudo npm install -g @angular/cli
+	{
+		Uninstall:
+		> npm uninstall -g @angular/cli
+		> npm cache clean --force
+	}
+- go to angular project with package.json
+- run > npm install {restore node modules}
+- run > ng serve {start angular app}
+
+main.ts <- app.component.ts (selector: app-root -> index.html <=>{...<app-root>...})
+
+add component:
+	> ng generate component shared/components/add-task
+	
+	check within shared.module.ts {
+		import generated component from '@shared/' instead of './'
+		move generated component from  @NgModule { declarations ...} to const COMPONENTS = [...
+	}
+
+add service:
+	> ng generate service shared/services/todotask
+
+add directive:
+	> ng generate directive shared/directives/clickDouble
+
+add to packages.json:
+	> ng add @fortawesome/angular-fontawesome
+	
+------ JSON Server - fake REST API server
+> npm install -g json-server {local installation > npm i json-server}
+- create db.json with some data
+- start JSON Server
+> json-server --watch db.json {run on localhost:3000} (or optional - package.json -> (add) "scripts" : {...,"server":"json-server --watch db.json --port 5000",...} > npm run server)
+
+Emit event example (local component level):
+  @Output() onAddTask: EventEmitter<TodoTask> = new EventEmitter();
+  Common flow:
+	> in local html part of component - add to element - (click)="onDelete(toDoTask)"
+	> in local ts part of component 
+		- declare method "onDelete(task: TodoTask){}"
+		- add Output + EventEmitter to imports: import { ..., Output, EventEmitter } from '@angular/core';
+		- add Output property to class code (before constructor) : @Output() onDeleteTask: EventEmitter<TodoTask> = new EventEmitter();
+		- pass event from local method to declared Output property:
+			  	onDelete(task: TodoTask) {
+					this.onDeleteTask.emit(task);
+				}
+		- within html part of parent component you can use emited event from child element (e.g. for loop NgFor)
+			*ngFor="let toDoTask of toDoTasks"
+               (onDeleteTask)="deleteTask(toDoTask)"
+		- declare method "deleteTask(toDoTask: TodoTask)" in parent class with proper srvice injected:
+			deleteTask(taskToDelete: TodoTask) {
+				this.taskService
+				.deleteTask(taskToDelete)
+				.subscribe(
+					() => (this.toDoTasks = this.toDoTasks.filter((t) => t.id !== taskToDelete.id))
+				);
+			}
+
+
+Model Binding with form:
+1. Regiter FormsModule in your app.module.ts (or shared.module.ts if so) - not available by default
+	import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+	+ add to "imports" bundle 
+2. Binding within html part of component : [] - for input; () - for output;
+  if 2 way of data binding - use both [(ngModel)]="yourClassProperty" e.g. [(ngModel)]="taskText" within input of form

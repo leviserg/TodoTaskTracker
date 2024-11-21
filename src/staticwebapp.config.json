@@ -1,0 +1,29 @@
+{
+  "navigationFallback": {
+    "rewrite": "/index.html",
+    "exclude": [ "/assets/images/*.{png,jpg,gif,svg}", "/css/*" ]
+  },
+  "forwardingGateway": {
+    "allowedForwardedHosts": [
+      "vps67345.hyperhost.name"
+    ]
+  },
+  "responseOverrides": {
+    "404": {
+      "redirect": "/not-found"
+    }
+  },
+  "mimeTypes": {
+    ".json": "text/json"
+  },
+  "globalHeaders": {
+    "Content-Security-Policy": "default-src 'self' *.deloitte.com wss://signalr-briefing-book-staging.service.signalr.net wss://signalr-briefing-book-prod.service.signalr.net https://signalr-briefing-book-staging.service.signalr.net https://signalr-briefing-book-prod.service.signalr.net https://deloitteus.demdex.net/ https://login.microsoftonline.com dpm.demdex.net/ https://fast.deloitteus.demdex.net/ https://cdn.cookielaw.org *.onetrust.com; img-src 'self' *.deloitte.com cm.everesttech.net https://dpm.demdex.net https://cdn.cookielaw.org *.sec.gov data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com/; font-src 'self' https://fonts.gstatic.com/ data:; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://*.deloitte.com https://login.microsoftonline.com https://assets.adobedtm.com/ https://assets.adobedtm.com/ https://dpm.demdex.net https://cdn.cookielaw.org; frame-src 'self' https://ask.deloitte.com https://deloitteus.demdex.net/ https://login.microsoftonline.com",
+    "Cache-Control": "no-cache, no-store, must-revalidate, max-age=0, s-maxage=0",
+    "X-Content-Type-Options": "nosniff",
+    "X-XSS-Protection": "1; mode=block",
+    "X-Frame-Options": "SAMEORIGIN",
+    "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+    "Pragma": "no-cache",
+    "Expires": "0"
+  }
+}

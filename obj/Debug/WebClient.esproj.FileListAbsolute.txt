@@ -1,0 +1,1 @@
+C:\MyProjects\dotnet\CrudDapperGraphQL\WebClient\obj\Debug\WebClient.esproj.CoreCompileInputs.cache

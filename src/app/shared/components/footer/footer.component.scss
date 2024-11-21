@@ -1,0 +1,35 @@
+footer {
+  .footer-container {
+    position: relative;
+    overflow: hidden;
+    padding: 10px;
+    min-height: 10px;
+    background: var(--c-grey);
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 10px;
+      margin-top: -10px;
+      box-shadow: 0 0 1px rgba(9, 30, 66, 0.3), 0 3px 5px rgba(9, 30, 66, 0.2);
+    }
+
+    ::ng-deep {
+      .footer-container-item {
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 18px;
+
+        a {
+          color: var(--c-blue);
+        }
+
+        p {
+          color: var(--c-black);
+        }
+      }
+    }
+  }
+}
