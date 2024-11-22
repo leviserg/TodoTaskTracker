@@ -38,6 +38,7 @@ add to packages.json:
 - create db.json with some data
 - start JSON Server
 > json-server --watch db.json {run on localhost:3000} (or optional - package.json -> (add) "scripts" : {...,"server":"json-server --watch db.json --port 5000",...} > npm run server)
+> npm run server
 
 Emit event example (local component level):
   @Output() onAddTask: EventEmitter<TodoTask> = new EventEmitter();

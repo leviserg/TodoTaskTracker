@@ -70,7 +70,7 @@ const MATERIAL_MODULES = [
 
 const MODULES = [
   CommonModule,
-  RouterModule.forRoot(APP_ROUTES, { enableTracing: true }),
+  RouterModule.forRoot(APP_ROUTES, { enableTracing: false }),
   FormsModule,
   ReactiveFormsModule,
   FontAwesomeModule,
